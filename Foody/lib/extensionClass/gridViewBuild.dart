@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/categoriesHomeModel.dart';
 
-class GridViewBuilder extends StatelessWidget {
+class GridViewBuilder extends StatefulWidget {
   GridViewBuilder({
     Key? key,
     required this.maxCrossAxisExtent,
@@ -13,7 +13,6 @@ class GridViewBuilder extends StatelessWidget {
     required this.itemCount,
   }) : super(key: key);
 
-  // final foodCategoriesData = foodyCategories[index];
   final double maxCrossAxisExtent,
       childAspectRatio,
       crossAxisSpacing,
@@ -23,18 +22,23 @@ class GridViewBuilder extends StatelessWidget {
   int itemCount;
 
   @override
+  State<GridViewBuilder> createState() => _GridViewBuilderState();
+}
+
+class _GridViewBuilderState extends State<GridViewBuilder> {
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onPress(),
+      onTap: widget.onPress(),
       child: GridView.builder(
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-              maxCrossAxisExtent: maxCrossAxisExtent,
-              childAspectRatio: childAspectRatio,
-              crossAxisSpacing: crossAxisSpacing,
-              mainAxisSpacing: mainAxisSpacing),
-          itemCount: itemCount,
+              maxCrossAxisExtent: widget.maxCrossAxisExtent,
+              childAspectRatio: widget.childAspectRatio,
+              crossAxisSpacing: widget.crossAxisSpacing,
+              mainAxisSpacing: widget.mainAxisSpacing),
+          itemCount: widget.itemCount,
           itemBuilder: (BuildContext ctx, index) {
             return Container(
                 padding: const EdgeInsets.all(10),
@@ -43,7 +47,7 @@ class GridViewBuilder extends StatelessWidget {
                   color: Colors.white70,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: rowColum);
+                child: widget.rowColum);
           }),
     );
   }

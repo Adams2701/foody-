@@ -18,11 +18,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
+      initialRoute: HomeScreen.id,
       routes: {
-          '/' : (context) => const OnBoardingScreen(),
-        '/homeScreen':(context) => const HomeScreen(),
-        '/listOfDishes' :(context) => ListOfDishes(dishCategories: categoryData),
-        '/dishDetails' :(context) => DishDetails()
+          OnBoardingScreen.id : (context) => const OnBoardingScreen(),
+        HomeScreen.id :(context) => const HomeScreen(),
+        // ListOfDishes.id :(context) => ListOfDishes(dishCategories: categoryData),
+        // DishDetails.id :(context) => DishDetails()
         // '/dishDetails' : (context) => const DishDetails(listOfDish: null,),
 
       },

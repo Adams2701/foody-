@@ -3,6 +3,7 @@ import 'package:foody/models/dishDetailsModel.dart';
 import '../../models/categoriesHomeModel.dart';
 
 class DishDetails extends StatelessWidget {
+  static const String id = 'dishDetails';
   final DishDetailslModel image, dishesName, calories, dishDescription;
 
   const DishDetails(

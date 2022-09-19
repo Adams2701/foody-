@@ -6,6 +6,7 @@ import 'package:foody/views/home/foodyHomeScreen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
+  static const String id = 'onBoardingScreen';
 
   @override
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();

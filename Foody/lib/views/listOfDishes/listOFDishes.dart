@@ -4,6 +4,7 @@ import 'package:foody/models/categoriesHomeModel.dart';
 import 'package:foody/models/listOfDishModel.dart';
 
 class ListOfDishes extends StatelessWidget {
+  static const String id = 'listOfDishes';
 
   final List <ListOfDishesModel> listOfDishes = [];
   final  Category dishCategories;
