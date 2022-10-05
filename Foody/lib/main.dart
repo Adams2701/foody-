@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:foody/views/dishDetails/dishDetails.dart';
-import 'package:foody/views/home/foodyHomeScreen.dart';
-import 'package:foody/views/listOfDishes/listOFDishes.dart';
-import 'package:foody/views/onboardingScreen/onboardingScreen.dart';
-
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:foody/bloc/category_bloc/category_bloc.dart';
+import 'package:foody/bloc/category_bloc/category_event.dart';
+import 'package:foody/networking/networkService.dart';
+import 'package:foody/presentation/route_manger/route_manager.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => CategoryBloc(RepositoryProvider.of<CallApi>(context))..add(LoadCategoryEvent())),
+        // BlocProvider(create: (context) => SpecialBloc(RepositoryProvider.of<CallApi>(context))..add(LoadSpecialEvent())),
+      ],
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
+        onGenerateRoute: RouteGenerator.getRoute,
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
-      initialRoute: HomeScreen.id,
-      routes: {
-          OnBoardingScreen.id : (context) => const OnBoardingScreen(),
-        HomeScreen.id :(context) => const HomeScreen(),
-        // ListOfDishes.id :(context) => ListOfDishes(dishCategories: categoryData),
-        // DishDetails.id :(context) => DishDetails()
-        // '/dishDetails' : (context) => const DishDetails(listOfDish: null,),
-
-      },
+        home: RepositoryProvider(
+          create: (context) => CallApi(),
+        ),
+        initialRoute: Routes.onBoardingScreen,
+      ),
     );
   }
 }

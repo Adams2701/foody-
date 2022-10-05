@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:foody/models/onboardData.dart';
+import 'package:foody/data_layer/onboardData.dart';
 
 class OnboardContent extends StatelessWidget {
   const OnboardContent({

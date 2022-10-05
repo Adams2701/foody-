@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:foody/controllers/dotIndicator/dotIndicator.dart';
 import 'package:foody/controllers/onboardContent/onboardContent.dart';
-import 'package:foody/models/onboardData.dart';
-import 'package:foody/views/home/foodyHomeScreen.dart';
+import 'package:foody/data_layer/onboardData.dart';
+
+import '../home/foodyHomeScreen.dart';
+
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);

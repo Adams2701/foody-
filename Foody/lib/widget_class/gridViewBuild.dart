@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/categoriesHomeModel.dart';
+import '../data_layer/apiModels/dishModel.dart';
 
 class GridViewBuilder extends StatefulWidget {
   GridViewBuilder({
