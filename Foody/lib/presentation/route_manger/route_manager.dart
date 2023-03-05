@@ -5,7 +5,7 @@ import 'package:foody/presentation/home/foodyHomeScreen.dart';
 import 'package:foody/presentation/listOfDishes/listOFDishes.dart';
 import 'package:foody/presentation/onboardingScreen/onboardingScreen.dart';
 
-class Routes {
+class AppRoutes {
   static const String onBoardingScreen = '/';
   static const String homeScreen = '/homeScreen';
   static const String listOfDishes = '/listOfDishes';
@@ -16,13 +16,13 @@ class Routes {
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
-      case Routes.onBoardingScreen:
+      case AppRoutes.onBoardingScreen:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
-      case Routes.homeScreen:
+      case AppRoutes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      // case Routes.listOfDishes:
+      // case AppRoutes.listOfDishes:
       //   return MaterialPageRoute(builder: (_) => const ListOfDishes());
-      // case Routes.dishDetails:
+      // case AppRoutes.dishDetails:
       //   return MaterialPageRoute(builder: (_) => const DishDetails());
 
       default:

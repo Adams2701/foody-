@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                 Expanded(
                   child: GridViewBuilder(
                     onPress: () {
-                      Navigator.pushNamed(context, Routes.listOfDishes);
+                      Navigator.pushNamed(context, AppRoutes.listOfDishes);
                     },
                     itemCount: categoriesDish.length,
                     maxCrossAxisExtent: 100,

@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         home: RepositoryProvider(
           create: (context) => CallApi(),
         ),
-        initialRoute: Routes.onBoardingScreen,
+        initialRoute: AppRoutes.onBoardingScreen,
       ),
     );
   }
