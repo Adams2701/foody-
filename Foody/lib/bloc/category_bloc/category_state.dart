@@ -1,7 +1,6 @@
 
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:foody/data_layer/apiModels/dishModel.dart';
 
 abstract class CategoryState extends Equatable {}
@@ -16,7 +15,7 @@ class CategoryLoadingState extends CategoryState{
  // when the data has loaded
 
 class CategoryLoadedState extends CategoryState{
-  final List<Categories> category;
+  final List<DishCategoriesResponse> category;
   CategoryLoadedState(this.category);
 
   @override

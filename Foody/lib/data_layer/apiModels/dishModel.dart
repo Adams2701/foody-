@@ -11,9 +11,6 @@ class DishCategoriesResponse {
     data = json['data'] != null ?  Data.fromJson(json['data']) : null;
   }
 
-  // Using Named constructor, you explicitly mention the data type for key and value. In our case for keys we have used string format. And keys are always in string format anyway.
-  // For values we have used dynamic type since they could be integer, string or even object type.
-
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data =  <String, dynamic>{};
     data['status'] = status;

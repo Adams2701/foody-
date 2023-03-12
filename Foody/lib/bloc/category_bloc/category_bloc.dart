@@ -6,19 +6,18 @@ import 'package:foody/bloc/category_bloc/category_state.dart';
 import 'package:foody/networking/networkService.dart';
 
 class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
-  final CallApi _callApi;
-  CategoryBloc(this._callApi) : super(CategoryLoadingState()){
+  final DishApi _dishApi;
+  CategoryBloc(this._dishApi) : super(CategoryLoadingState()){
     on<LoadCategoryEvent>((event, emit) async {
       emit(CategoryLoadingState());
       try {
-        final categoryData = await _callApi.getDish('dish-categories');
-        emit(CategoryLoadedState(categoryData));
+        final category = await _dishApi.fetchDishCategories();
+        emit(CategoryLoadedState(category));
       } catch (err) {
         emit(ErrorCategory(err.toString()));
       }
 
     });
   }
-
-
 }
+
