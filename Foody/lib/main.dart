@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:foody/bloc/category_bloc/category_bloc.dart';
-import 'package:foody/bloc/category_bloc/category_event.dart';
-import 'package:foody/bloc/popular_bloc/popular_bloc.dart';
-import 'package:foody/bloc/popular_bloc/popular_event.dart';
-import 'package:foody/bloc/special_bloc/special_bloc.dart';
-import 'package:foody/bloc/special_bloc/special_event.dart';
+import 'package:foody/bloc/dish_categories_bloc/dish_categories_bloc.dart';
+import 'package:foody/bloc/dish_list/dishlist-event_bloc.dart';
+import 'package:foody/bloc/dish_list/dishlist_bloc.dart';
+import 'package:foody/bloc/order_bloc/order_bloc.dart';
 import 'package:foody/networking/networkService.dart';
 import 'package:foody/presentation/route_manger/route_manager.dart';
+
+import 'data_layer/apiModels/dishModel.dart';
 
 
 void main() {
@@ -15,7 +15,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+
+  const MyApp({Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,21 +25,21 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           //Foody_Home_Bloc
-          BlocProvider(
-            create: (context) => CategoryBloc(
-                RepositoryProvider.of<DishApi>(context)
-            )..add(LoadCategoryEvent()),
+          BlocProvider<DishBloc>(
+            create: (context) => DishBloc(
+              RepositoryProvider.of<DishApi>(context),
+              //context.read<DishApi>(), it can be used to retrieve in the instance of DishApI and pass it to the DishBloc
+            )..add(LoadDishData()),
           ),
-          BlocProvider(
-            create: (context) => PopularBloc(
-              RepositoryProvider.of<DishApi>(context)
-            )..add(LoadPopularEvent()),
-          ),
-          BlocProvider(
-            create: (context) => SpecialBloc(
-                RepositoryProvider.of<DishApi>(context)
-            )..add(LoadSpecialEvent()),
-          ),
+          BlocProvider<OrderBloc>(
+            create: (context) => OrderBloc(
+                RepositoryProvider.of<DishApi>(context)),
+          )
+          // BlocProvider<DishListBloc>(
+          //   create: (context) => DishListBloc(
+          //     RepositoryProvider.of<DishApi>(context),
+          //   )..add(LoadDishListEvent(categoryId: category)),
+          // ),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -46,9 +47,11 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.red,
           ),
-          initialRoute: AppRoutes.onBoardingScreen,
+          initialRoute: AppRoutes.homeScreen,
         ),
       ),
     );
   }
 }
+
+

@@ -21,9 +21,9 @@ class RouteGenerator {
       case AppRoutes.homeScreen:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       // case AppRoutes.listOfDishes:
-      //   return MaterialPageRoute(builder: (_) => const ListOfDishes());
+      //   return MaterialPageRoute(builder: (_) =>  ListOfDishes(category: category));
       // case AppRoutes.dishDetails:
-      //   return MaterialPageRoute(builder: (_) => const DishDetails());
+      //   return MaterialPageRoute(builder: (_) => const DishDetails(cate));
 
       default:
         return UnDefinedRoute();
