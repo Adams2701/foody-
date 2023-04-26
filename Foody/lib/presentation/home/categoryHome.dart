@@ -19,7 +19,7 @@ class CategoryHome extends StatelessWidget {
     children: [
       const SizedBox(height: 10),
       const Text(
-        'Food Category__',
+        'Food Category',
         style: KTextStyle17,
       ),
       const SizedBox(height: 10),
